@@ -1,14 +1,13 @@
-public class BankAccount {
+public abstract class BankAccount {
 
-    private double balance;
+    protected double balance;
+    protected String accountType;
     private double apr;
     private int id;
-    private String accountType;
 
-    public BankAccount(double apr, int id, String accountType) {
+    public BankAccount(int id, double apr) {
         this.apr = apr;
         this.id = id;
-        this.accountType = accountType;
     }
 
     public String getAccountType() {

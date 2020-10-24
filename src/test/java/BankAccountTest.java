@@ -8,12 +8,11 @@ public class BankAccountTest {
 
     public static final double APR = 0.01;
     public static final int ID = 12345678;
-    public static final String BANK_ACCOUNT_TYPE = "checking";
     BankAccount checkingAccount;
 
     @BeforeEach
     void setUp() {
-        checkingAccount = new BankAccount(APR, ID, BANK_ACCOUNT_TYPE);
+        checkingAccount = new CheckingAccount(ID, APR);
     }
 
     @Test
@@ -23,14 +22,14 @@ public class BankAccountTest {
 
     @Test
     void same_bank_account_type_equality() {
-        BankAccount checkingAccount2 = new BankAccount(APR, ID, BANK_ACCOUNT_TYPE);
+        BankAccount checkingAccount2 = new CheckingAccount(ID, APR);
         assertFalse(checkingAccount.equals(checkingAccount2));
     }
 
     @Test
     void different_bank_account_type_equality() {
-        BankAccount savingsAccount = new BankAccount(APR, ID, "savings");
-        BankAccount cdAccount = new BankAccount(APR, ID, "cd");
+        BankAccount savingsAccount = new SavingsAccount(ID, APR);
+        BankAccount cdAccount = new CdAccount(ID, APR, 100);
         assertFalse(checkingAccount.equals(savingsAccount));
         assertFalse(checkingAccount.equals(cdAccount));
     }
