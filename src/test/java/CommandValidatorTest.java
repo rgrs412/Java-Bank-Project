@@ -15,6 +15,12 @@ public class CommandValidatorTest {
     }
 
     @Test
+    void command_is_valid_if_not_empty() {
+        command = "Create checking 12345678 0.01";
+        assertTrue(cmdValidator.isNotEmpty(command));
+    }
+
+    @Test
     void create_command_has_4_arguments() {
         command = "Create checking 12345678 0.01";
         assertTrue(cmdValidator.isValidNumberOfCommandArguments(command));
@@ -31,4 +37,5 @@ public class CommandValidatorTest {
         command = "Create checking 12345678 0.01 abc";
         assertFalse(cmdValidator.isValidNumberOfCommandArguments(command));
     }
+
 }
