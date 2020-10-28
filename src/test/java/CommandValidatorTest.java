@@ -25,4 +25,10 @@ public class CommandValidatorTest {
         command = "Create checking 12345678";
         assertFalse(cmdValidator.isValidNumberOfCommandArguments(command));
     }
+
+    @Test
+    void create_command_has_more_than_4_arguments() {
+        command = "Create checking 12345678 0.01 abc";
+        assertFalse(cmdValidator.isValidNumberOfCommandArguments(command));
+    }
 }
