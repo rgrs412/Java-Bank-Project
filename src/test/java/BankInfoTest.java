@@ -31,4 +31,9 @@ public class BankInfoTest {
     void savings_is_a_bank_account_type() {
         assertTrue(bankInfo.getBankAccountTypes().contains("savings"));
     }
+
+    @Test
+    void cd_is_a_bank_account_type() {
+        assertTrue(bankInfo.getBankAccountTypes().contains("cd"));
+    }
 }
