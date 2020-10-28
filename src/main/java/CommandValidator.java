@@ -5,6 +5,6 @@ public class CommandValidator {
     }
 
     public boolean isNotEmpty(String command) {
-        return true;
+        return !command.isEmpty();
     }
 }
