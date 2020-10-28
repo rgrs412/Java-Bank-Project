@@ -18,8 +18,7 @@ public class CommandValidatorTest {
 
     @Test
     void command_is_not_empty_string() {
-        command = VALID_CREATE_COMMAND;
-        assertTrue(cmdValidator.isNotEmpty(command));
+        assertTrue(cmdValidator.isNotEmpty(VALID_CREATE_COMMAND));
     }
 
     @Test
@@ -30,31 +29,11 @@ public class CommandValidatorTest {
 
     @Test
     void create_is_a_valid_command() {
-        command = VALID_CREATE_COMMAND;
-        assertTrue(cmdValidator.isValidCommand(command));
+        assertTrue(cmdValidator.isValidCommand(VALID_CREATE_COMMAND));
     }
 
     @Test
     void deposit_is_a_valid_command() {
-        command = VALID_DEPOSIT_COMMAND;
-        assertTrue(cmdValidator.isValidCommand(command));
-    }
-
-    @Test
-    void create_command_has_4_arguments() {
-        command = VALID_CREATE_COMMAND;
-        assertTrue(cmdValidator.isValidNumberOfCommandArguments(command));
-    }
-
-    @Test
-    void create_command_has_less_than_4_arguments() {
-        command = "Create checking 12345678";
-        assertFalse(cmdValidator.isValidNumberOfCommandArguments(command));
-    }
-
-    @Test
-    void create_command_has_more_than_4_arguments() {
-        command = VALID_CREATE_COMMAND + " abc";
-        assertFalse(cmdValidator.isValidNumberOfCommandArguments(command));
+        assertTrue(cmdValidator.isValidCommand(VALID_DEPOSIT_COMMAND));
     }
 }
