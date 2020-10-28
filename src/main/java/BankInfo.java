@@ -15,5 +15,6 @@ public class BankInfo {
 
     private void addBankActions() {
         bankActions.add("create");
+        bankActions.add("deposit");
     }
 }

@@ -16,4 +16,9 @@ public class BankInfoTest {
     void create_is_a_bank_action() {
         assertTrue(bankInfo.getBankActions().contains("create"));
     }
+
+    @Test
+    void deposit_is_a_bank_action() {
+        assertTrue(bankInfo.getBankActions().contains("deposit"));
+    }
 }
