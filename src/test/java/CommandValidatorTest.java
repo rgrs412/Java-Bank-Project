@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CommandValidatorTest {
 
-    public static final String VALID_COMMAND_1 = "Create checking 12345678 0.01";
+    public static final String VALID_CREATE_COMMAND = "Create checking 12345678 0.01";
     CommandValidator cmdValidator;
     String command;
 
@@ -16,20 +16,20 @@ public class CommandValidatorTest {
     }
 
     @Test
-    void command_is_valid_if_not_empty() {
-        command = VALID_COMMAND_1;
+    void command_is_not_empty_string() {
+        command = VALID_CREATE_COMMAND;
         assertTrue(cmdValidator.isNotEmpty(command));
     }
 
     @Test
-    void command_is_invalid_if_empty() {
+    void command_is_invalid_if_it_is_empty_string() {
         command = "";
         assertFalse(cmdValidator.isNotEmpty(command));
     }
 
     @Test
     void create_command_has_4_arguments() {
-        command = VALID_COMMAND_1;
+        command = VALID_CREATE_COMMAND;
         assertTrue(cmdValidator.isValidNumberOfCommandArguments(command));
     }
 
@@ -41,7 +41,7 @@ public class CommandValidatorTest {
 
     @Test
     void create_command_has_more_than_4_arguments() {
-        command = VALID_COMMAND_1 + " abc";
+        command = VALID_CREATE_COMMAND + " abc";
         assertFalse(cmdValidator.isValidNumberOfCommandArguments(command));
     }
 }
