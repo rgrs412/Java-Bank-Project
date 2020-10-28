@@ -27,5 +27,6 @@ public class BankInfo {
 
     private void addBankAccountTypes() {
         bankAccountTypes.add("checking");
+        bankAccountTypes.add("savings");
     }
 }
