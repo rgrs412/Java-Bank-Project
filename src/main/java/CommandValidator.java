@@ -6,10 +6,6 @@ public class CommandValidator {
         bank = new Bank();
     }
 
-    public boolean isValidNumberOfCommandArguments(String command) {
-        return command.split(" ").length == 4;
-    }
-
     public boolean isNotEmpty(String command) {
         return !command.isEmpty();
     }

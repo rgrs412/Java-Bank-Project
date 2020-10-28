@@ -17,12 +17,7 @@ public class CommandValidatorTest {
     }
 
     @Test
-    void command_is_not_empty_string() {
-        assertTrue(cmdValidator.isNotEmpty(VALID_CREATE_COMMAND));
-    }
-
-    @Test
-    void command_is_invalid_if_it_is_empty_string() {
+    void empty_string_command_is_invalid() {
         command = "";
         assertFalse(cmdValidator.isNotEmpty(command));
     }
