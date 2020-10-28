@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CommandValidatorTest {
 
+
     CommandValidator cmdValidator;
     String command;
 
@@ -18,6 +19,12 @@ public class CommandValidatorTest {
     void command_is_valid_if_not_empty() {
         command = "Create checking 12345678 0.01";
         assertTrue(cmdValidator.isNotEmpty(command));
+    }
+
+    @Test
+    void command_is_invalid_if_empty() {
+        command = "";
+        assertFalse(cmdValidator.isNotEmpty(command));
     }
 
     @Test
