@@ -35,6 +35,12 @@ public class CommandValidatorTest {
     }
 
     @Test
+    void deposit_is_a_valid_command() {
+        command = VALID_DEPOSIT_COMMAND;
+        assertTrue(cmdValidator.isValidCommand(command));
+    }
+
+    @Test
     void create_command_has_4_arguments() {
         command = VALID_CREATE_COMMAND;
         assertTrue(cmdValidator.isValidNumberOfCommandArguments(command));
