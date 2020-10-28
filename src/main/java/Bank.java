@@ -4,13 +4,19 @@ import java.util.Map;
 public class Bank {
 
     private Map<Integer, BankAccount> bankAccounts;
+    private BankInfo bankInfo;
 
     public Bank() {
         bankAccounts = new HashMap<>();
+        bankInfo = new BankInfo();
     }
 
     public Map<Integer, BankAccount> getBankAccounts() {
         return bankAccounts;
+    }
+
+    public BankInfo getBankInfo() {
+        return bankInfo;
     }
 
     public void addBankAccount(BankAccount bankAccount, int id) {
