@@ -55,4 +55,9 @@ public class CreateCommandValidatorTest {
     void create_cd_has_5_arguments_is_valid() {
         assertTrue(createCommandValidator.validate(VALID_CREATE_CD_COMMAND));
     }
+
+    @Test
+    void create_cd_has_more_than_5_arguments_is_invalid() {
+        assertFalse(createCommandValidator.validate(VALID_CREATE_CD_COMMAND + " abc"));
+    }
 }
