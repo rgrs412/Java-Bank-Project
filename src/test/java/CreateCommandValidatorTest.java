@@ -17,47 +17,47 @@ public class CreateCommandValidatorTest {
     }
 
     @Test
-    void create_checking_has_less_than_4_arguments_is_invalid() {
+    void create_checking_command_with_less_than_4_arguments_is_invalid() {
         assertFalse(createCommandValidator.validate("create checking 12345678"));
     }
 
     @Test
-    void create_checking_has_4_arguments_is_valid() {
+    void create_checking_command_with_4_arguments_is_valid() {
         assertTrue(createCommandValidator.validate(VALID_CREATE_CHECKING_COMMAND));
     }
 
     @Test
-    void create_checking_has_more_than_4_arguments_is_invalid() {
+    void create_checking_command_with_more_than_4_arguments_is_invalid() {
         assertFalse(createCommandValidator.validate(VALID_CREATE_CHECKING_COMMAND + " abc"));
     }
 
     @Test
-    void create_savings_has_less_than_4_arguments_is_invalid() {
+    void create_savings_command_with_less_than_4_arguments_is_invalid() {
         assertFalse(createCommandValidator.validate("create savings 12345678"));
     }
 
     @Test
-    void create_savings_has_4_arguments_is_valid() {
+    void create_savings_command_with_4_arguments_is_valid() {
         assertTrue(createCommandValidator.validate(VALID_CREATE_SAVINGS_COMMAND));
     }
 
     @Test
-    void create_savings_has_more_than_4_arguments_is_invalid() {
+    void create_savings_command_with_more_than_4_arguments_is_invalid() {
         assertFalse(createCommandValidator.validate(VALID_CREATE_SAVINGS_COMMAND + " abc"));
     }
 
     @Test
-    void create_cd_has_less_than_5_arguments_is_invalid() {
+    void create_cd_command_with_less_than_5_arguments_is_invalid() {
         assertFalse(createCommandValidator.validate("create cd 12345678 0.01"));
     }
 
     @Test
-    void create_cd_has_5_arguments_is_valid() {
+    void create_cd_command_with_5_arguments_is_valid() {
         assertTrue(createCommandValidator.validate(VALID_CREATE_CD_COMMAND));
     }
 
     @Test
-    void create_cd_has_more_than_5_arguments_is_invalid() {
+    void create_cd_command_with_more_than_5_arguments_is_invalid() {
         assertFalse(createCommandValidator.validate(VALID_CREATE_CD_COMMAND + " abc"));
     }
 }
