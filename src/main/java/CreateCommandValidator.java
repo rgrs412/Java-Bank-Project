@@ -3,6 +3,8 @@ public class CreateCommandValidator extends CommandValidator {
     private static final int NUMBER_OF_CREATE_CHECKING_ARGUMENTS = 4;
     private static final int NUMBER_OF_CREATE_SAVINGS_ARGUMENTS = 4;
     private static final int NUMBER_OF_CREATE_CD_ARGUMENTS = 5;
+    private static final String CHECKING = "checking";
+    private static final String SAVINGS = "savings";
 
     public CreateCommandValidator(Bank bank) {
         super(bank);
@@ -21,9 +23,9 @@ public class CreateCommandValidator extends CommandValidator {
 
     public boolean createCommandHasValidNumberOfArguments() {
         String bankAccountType = getCommandArray()[1];
-        if (bankAccountType.equals("checking")) {
+        if (bankAccountType.equals(CHECKING)) {
             return getCommandArray().length == NUMBER_OF_CREATE_CHECKING_ARGUMENTS;
-        } else if (bankAccountType.equals("savings")) {
+        } else if (bankAccountType.equals(SAVINGS)) {
             return getCommandArray().length == NUMBER_OF_CREATE_SAVINGS_ARGUMENTS;
         } else {
             return getCommandArray().length == NUMBER_OF_CREATE_CD_ARGUMENTS;

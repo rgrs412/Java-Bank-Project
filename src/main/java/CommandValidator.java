@@ -12,7 +12,7 @@ public abstract class CommandValidator {
     }
 
     public void setCommand(String command) {
-        this.command = command;
+        this.command = command.toLowerCase();
     }
 
     public String[] getCommandArray() {
