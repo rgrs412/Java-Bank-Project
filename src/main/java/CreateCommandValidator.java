@@ -7,4 +7,5 @@ public class CreateCommandValidator extends CommandValidator {
     public boolean createCheckingHas4Arguments(String command) {
         return command.split(" ").length == 4;
     }
+
 }

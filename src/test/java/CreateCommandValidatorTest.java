@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CreateCommandValidatorTest {
@@ -16,5 +17,10 @@ public class CreateCommandValidatorTest {
     @Test
     void create_checking_has_4_arguments_is_valid() {
         assertTrue(createCommandValidator.validate(VALID_CREATE_COMMAND));
+    }
+
+    @Test
+    void create_checking_has_less_than_4_arguments_is_invalid() {
+        assertFalse(createCommandValidator.validate("create checking 12345678"));
     }
 }
