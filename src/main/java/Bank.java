@@ -28,4 +28,12 @@ public class Bank {
     public void withdraw(String id, double withdrawal) {
         bankAccounts.get(id).withdraw(withdrawal);
     }
+
+    public boolean bankAccountExistsById(String id) {
+        if (bankAccounts.get(id) != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

@@ -3,8 +3,8 @@ public abstract class CommandValidator {
     protected Bank bank;
     private String command;
 
-    public CommandValidator() {
-        bank = new Bank();
+    public CommandValidator(Bank bank) {
+        this.bank = bank;
     }
 
     public String getCommand() {
@@ -13,6 +13,10 @@ public abstract class CommandValidator {
 
     public void setCommand(String command) {
         this.command = command;
+    }
+
+    public String[] getCommandArray() {
+        return command.split(" ");
     }
 
     abstract boolean validate(String command);

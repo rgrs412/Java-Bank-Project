@@ -8,10 +8,12 @@ public class CommandValidatorTest {
 
     public static final String VALID_CREATE_COMMAND = "create checking 12345678 0.01";
     CommandValidator commandValidator;
+    Bank bank;
 
     @BeforeEach
     void setUp() {
-        commandValidator = new CreateCommandValidator();
+        bank = new Bank();
+        commandValidator = new CreateCommandValidator(bank);
     }
 
     @Test
@@ -20,7 +22,7 @@ public class CommandValidatorTest {
     }
 
     @Test
-    void command_is_initially_null() {
+    void the_command_that_needs_to_be_validated_is_initially_null() {
         assertEquals(null, commandValidator.getCommand());
     }
 }

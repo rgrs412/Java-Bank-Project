@@ -4,10 +4,15 @@ public class CreateCommandValidator extends CommandValidator {
     private static final int NUMBER_OF_CREATE_SAVINGS_ARGUMENTS = 4;
     private static final int NUMBER_OF_CREATE_CD_ARGUMENTS = 5;
 
+    public CreateCommandValidator(Bank bank) {
+        super(bank);
+    }
+
     @Override
     public boolean validate(String command) {
         setCommand(command);
-        return createCommandHasAtLeast4Arguments() && createCommandHasValidNumberOfArguments();
+        return createCommandHasAtLeast4Arguments() && createCommandHasValidNumberOfArguments()
+                && bankAccountExistsById();
     }
 
     public boolean createCommandHasAtLeast4Arguments() {
@@ -15,14 +20,22 @@ public class CreateCommandValidator extends CommandValidator {
     }
 
     public boolean createCommandHasValidNumberOfArguments() {
-        String[] commandArray = getCommand().split(" ");
-        String bankAccountType = commandArray[1];
+        String bankAccountType = getCommandArray()[1];
         if (bankAccountType.equals("checking")) {
-            return commandArray.length == NUMBER_OF_CREATE_CHECKING_ARGUMENTS;
+            return getCommandArray().length == NUMBER_OF_CREATE_CHECKING_ARGUMENTS;
         } else if (bankAccountType.equals("savings")) {
-            return commandArray.length == NUMBER_OF_CREATE_SAVINGS_ARGUMENTS;
+            return getCommandArray().length == NUMBER_OF_CREATE_SAVINGS_ARGUMENTS;
         } else {
-            return commandArray.length == NUMBER_OF_CREATE_CD_ARGUMENTS;
+            return getCommandArray().length == NUMBER_OF_CREATE_CD_ARGUMENTS;
+        }
+    }
+
+    public boolean bankAccountExistsById() {
+        String id = getCommandArray()[2];
+        if (bank.bankAccountExistsById(id)) {
+            return false;
+        } else {
+            return true;
         }
     }
 }

@@ -9,11 +9,22 @@ public class CreateCommandValidatorTest {
     public static final String VALID_CREATE_CHECKING_COMMAND = "create checking 12345678 0.01";
     public static final String VALID_CREATE_SAVINGS_COMMAND = "create savings 12345678 0.01";
     public static final String VALID_CREATE_CD_COMMAND = "create cd 12345678 0.01 1000";
+    public static final String ID = "12345678";
     CreateCommandValidator createCommandValidator;
+    Bank bank;
+    BankAccount bankAccount;
 
     @BeforeEach
     void setUp() {
-        createCommandValidator = new CreateCommandValidator();
+        bank = new Bank();
+        createCommandValidator = new CreateCommandValidator(bank);
+        bankAccount = new CheckingAccount(ID, 0.01);
+    }
+
+    @Test
+    void duplicate_account_id_is_invalid() {
+        bank.addBankAccount(bankAccount, ID);
+        assertFalse(createCommandValidator.validate(VALID_CREATE_CHECKING_COMMAND));
     }
 
     @Test
