@@ -11,7 +11,7 @@ public class CommandValidatorTest {
 
     @BeforeEach
     void setUp() {
-        commandValidator = new CommandValidator();
+        commandValidator = new CreateCommandValidator();
     }
 
     @Test

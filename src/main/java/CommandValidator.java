@@ -1,7 +1,5 @@
-public class CommandValidator {
-    public boolean validate(String command) {
-        return isNotEmpty(command);
-    }
+public abstract class CommandValidator {
+    abstract boolean validate(String command);
 
     public boolean isNotEmpty(String command) {
         return !command.isEmpty();
