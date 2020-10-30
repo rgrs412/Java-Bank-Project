@@ -3,9 +3,9 @@ public abstract class BankAccount {
     protected double balance;
     protected String accountType;
     private double apr;
-    private int id;
+    private String id;
 
-    public BankAccount(int id, double apr) {
+    public BankAccount(String id, double apr) {
         this.apr = apr;
         this.id = id;
     }
@@ -18,7 +18,7 @@ public abstract class BankAccount {
         return apr;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 

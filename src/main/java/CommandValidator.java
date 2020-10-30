@@ -1,7 +1,19 @@
 public abstract class CommandValidator {
-    abstract boolean validate(String command);
 
-    public boolean isNotEmpty(String command) {
-        return !command.isEmpty();
+    protected Bank bank;
+    private String command;
+
+    public CommandValidator() {
+        bank = new Bank();
     }
+
+    public String getCommand() {
+        return command;
+    }
+
+    public void setCommand(String command) {
+        this.command = command;
+    }
+
+    abstract boolean validate(String command);
 }

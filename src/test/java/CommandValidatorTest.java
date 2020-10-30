@@ -1,7 +1,7 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CommandValidatorTest {
@@ -20,7 +20,7 @@ public class CommandValidatorTest {
     }
 
     @Test
-    void empty_string_command_is_invalid() {
-        assertFalse(commandValidator.validate(""));
+    void command_is_initially_null() {
+        assertEquals(null, commandValidator.getCommand());
     }
 }

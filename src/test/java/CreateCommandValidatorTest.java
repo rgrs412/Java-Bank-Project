@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CreateCommandValidatorTest {
 
-    public static final String VALID_CREATE_COMMAND = "create checking 12345678 0.01";
+    public static final String VALID_CREATE_CHECKING_COMMAND = "create checking 12345678 0.01";
     CreateCommandValidator createCommandValidator;
 
     @BeforeEach
@@ -15,17 +15,17 @@ public class CreateCommandValidatorTest {
     }
 
     @Test
-    void create_checking_has_4_arguments_is_valid() {
-        assertTrue(createCommandValidator.validate(VALID_CREATE_COMMAND));
-    }
-
-    @Test
     void create_checking_has_less_than_4_arguments_is_invalid() {
         assertFalse(createCommandValidator.validate("create checking 12345678"));
     }
 
     @Test
+    void create_checking_has_4_arguments_is_valid() {
+        assertTrue(createCommandValidator.validate(VALID_CREATE_CHECKING_COMMAND));
+    }
+
+    @Test
     void create_checking_has_more_than_4_arguments_is_invalid() {
-        assertFalse(createCommandValidator.validate(VALID_CREATE_COMMAND + " abc"));
+        assertFalse(createCommandValidator.validate(VALID_CREATE_CHECKING_COMMAND + " abc"));
     }
 }

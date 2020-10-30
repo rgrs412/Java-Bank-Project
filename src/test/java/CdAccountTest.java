@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class CdAccountTest {
 
     public static final double APR = 0.01;
-    public static final int ID = 12345678;
+    public static final String ID = "12345678";
     public static final double INITIAL_DEPOSIT = 1.50;
     CdAccount cdAccount;
 
@@ -22,7 +22,7 @@ public class CdAccountTest {
 
     @Test
     void cd_account_has_the_right_id() {
-        assertEquals(12345678, cdAccount.getId());
+        assertEquals("12345678", cdAccount.getId());
     }
 
     @Test
