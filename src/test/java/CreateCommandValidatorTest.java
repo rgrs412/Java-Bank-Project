@@ -23,4 +23,9 @@ public class CreateCommandValidatorTest {
     void create_checking_has_less_than_4_arguments_is_invalid() {
         assertFalse(createCommandValidator.validate("create checking 12345678"));
     }
+
+    @Test
+    void create_checking_has_more_than_4_arguments_is_invalid() {
+        assertFalse(createCommandValidator.validate(VALID_CREATE_COMMAND + " abc"));
+    }
 }
