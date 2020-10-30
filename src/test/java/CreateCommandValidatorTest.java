@@ -39,4 +39,9 @@ public class CreateCommandValidatorTest {
     void create_savings_has_4_arguments_is_valid() {
         assertTrue(createCommandValidator.validate(VALID_CREATE_SAVINGS_COMMAND));
     }
+
+    @Test
+    void create_savings_has_more_than_4_arguments_is_invalid() {
+        assertFalse(createCommandValidator.validate(VALID_CREATE_SAVINGS_COMMAND + " abc"));
+    }
 }
