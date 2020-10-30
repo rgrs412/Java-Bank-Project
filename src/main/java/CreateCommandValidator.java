@@ -1,6 +1,7 @@
 public class CreateCommandValidator extends CommandValidator {
 
     private static final int NUMBER_OF_CREATE_CHECKING_ARGUMENTS = 4;
+    private static final int NUMBER_OF_CREATE_SAVINGS_ARGUMENTS = 4;
 
     @Override
     public boolean validate(String command) {
@@ -18,7 +19,7 @@ public class CreateCommandValidator extends CommandValidator {
         if (bankAccountType.equals("checking")) {
             return commandArray.length == NUMBER_OF_CREATE_CHECKING_ARGUMENTS;
         } else {
-            return false;
+            return commandArray.length == NUMBER_OF_CREATE_SAVINGS_ARGUMENTS;
         }
     }
 }

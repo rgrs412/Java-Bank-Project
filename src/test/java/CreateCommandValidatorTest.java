@@ -28,4 +28,9 @@ public class CreateCommandValidatorTest {
     void create_checking_has_more_than_4_arguments_is_invalid() {
         assertFalse(createCommandValidator.validate(VALID_CREATE_CHECKING_COMMAND + " abc"));
     }
+
+    @Test
+    void create_savings_has_less_than_4_arguments_is_invalid() {
+        assertFalse(createCommandValidator.validate("create savings 12345678"));
+    }
 }
