@@ -22,6 +22,16 @@ public class CreateCommandValidatorTest {
     }
 
     @Test
+    void bank_account_id_that_is_not_an_8_digit_natural_number_is_invalid() {
+        assertFalse(createCommandValidator.validate("create checking 1234567 0.01"));
+    }
+
+    @Test
+    void misspelled_create_command_is_invalid() {
+        assertFalse(createCommandValidator.validate("Createsssssss cccchecking 12345678 0.01"));
+    }
+
+    @Test
     void duplicate_account_id_is_invalid() {
         bank.addBankAccount(bankAccount, ID);
         assertFalse(createCommandValidator.validate(VALID_CREATE_CHECKING_COMMAND));
