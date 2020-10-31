@@ -19,7 +19,7 @@ public class CreateCommandValidator extends CommandValidator {
         id = getCommandArray()[2];
         return createCommandHasAtLeast4Arguments() && isCreateCommand() &&
                 createCommandHasValidNumberOfArguments() && bankAccountIdIs8DigitNaturalNumber()
-                && bankAccountExistsById();
+                && aprIsPercentage() && bankAccountExistsById();
     }
 
     public boolean createCommandHasAtLeast4Arguments() {
@@ -50,6 +50,11 @@ public class CreateCommandValidator extends CommandValidator {
 
     public boolean bankAccountIdIs8DigitNaturalNumber() {
         return (id.split("").length == 8) && (id.matches("\\d+"));
+    }
+
+    public boolean aprIsPercentage() {
+        String apr = getCommandArray()[3];
+        return apr.matches("\\d+(\\.\\d{1,2})?");
     }
 
     public boolean bankAccountExistsById() {

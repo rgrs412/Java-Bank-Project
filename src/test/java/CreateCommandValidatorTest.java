@@ -22,6 +22,11 @@ public class CreateCommandValidatorTest {
     }
 
     @Test
+    void apr_that_is_not_in_percentage_form_is_invalid() {
+        assertFalse(createCommandValidator.validate("create checking 12345678 1.000"));
+    }
+
+    @Test
     void bank_account_id_that_is_not_an_8_digit_natural_number_is_invalid() {
         assertFalse(createCommandValidator.validate("create checking 1234567 0.01"));
     }
