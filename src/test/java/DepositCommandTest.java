@@ -52,4 +52,11 @@ public class DepositCommandTest {
         depositCommandValidator.setCommandArray("deposit 12345678 2501");
         assertFalse(depositCommandValidator.isValidDeposit());
     }
+
+    @Test
+    void depositing_into_cd_account_is_invalid() {
+        bank.addBankAccount(cdAccount, ID);
+        depositCommandValidator.setCommandArray(VALID_DEPOSIT_COMMAND);
+        assertFalse(depositCommandValidator.isValidDeposit());
+    }
 }
