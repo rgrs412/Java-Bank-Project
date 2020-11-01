@@ -15,4 +15,10 @@ public class CreateCdValidator extends CreateCommandValidator {
     public boolean createCdCommandHasValidNumberOfArguments() {
         return getCommandArray().length == NUMBER_OF_CREATE_SAVINGS_ARGUMENTS;
     }
+
+    public boolean isValidMinimumInitialDeposit() {
+        String id = getCommandArray()[2];
+        Double initialDeposit = Double.parseDouble(getCommandArray()[4]);
+        return bank.isValidInitialDeposit(id, initialDeposit);
+    }
 }
