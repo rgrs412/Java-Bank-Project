@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class DepositCommandTest {
@@ -31,5 +32,10 @@ public class DepositCommandTest {
         assertTrue(depositCommandValidator.isValidDeposit());
     }
 
-
+    @Test
+    void depositing_1001_into_checking_account_is_valid() {
+        bank.addBankAccount(checkingAccount, ID);
+        depositCommandValidator.setCommandArray("deposit 12345678 1001");
+        assertFalse(depositCommandValidator.isValidDeposit());
+    }
 }
