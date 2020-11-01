@@ -40,4 +40,8 @@ public class Bank {
     public boolean isValidInitialDeposit(String id, Double initialDeposit) {
         return bankAccounts.get(id).isValidInitialDeposit(initialDeposit);
     }
+
+    public boolean isValidDeposit(String id, Double depositAmount) {
+        return bankAccounts.get(id).isValidDeposit(depositAmount);
+    }
 }

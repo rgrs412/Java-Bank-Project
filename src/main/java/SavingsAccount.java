@@ -4,5 +4,6 @@ public class SavingsAccount extends BankAccount {
         super(id, apr);
         accountType = "savings";
         minimumInitialDeposit = 0;
+        maxDeposit = 2500;
     }
 }
