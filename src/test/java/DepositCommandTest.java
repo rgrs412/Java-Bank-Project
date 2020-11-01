@@ -38,4 +38,13 @@ public class DepositCommandTest {
         depositCommandValidator.setCommandArray("deposit 12345678 1001");
         assertFalse(depositCommandValidator.isValidDeposit());
     }
+
+    @Test
+    void depositing_2500_into_checking_account_is_valid() {
+        bank.addBankAccount(savingsAccount, ID);
+        depositCommandValidator.setCommandArray("deposit 12345678 2500");
+        assertTrue(depositCommandValidator.isValidDeposit());
+    }
+
+
 }
