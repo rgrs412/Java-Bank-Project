@@ -2,6 +2,7 @@ public abstract class BankAccount {
 
     protected double balance;
     protected String accountType;
+    protected double minimumInitialDeposit;
     private double apr;
     private String id;
 
@@ -35,5 +36,9 @@ public abstract class BankAccount {
         if (balance < 0) {
             balance = 0;
         }
+    }
+
+    public boolean isValidInitialDeposit(Double initialDeposit) {
+        return minimumInitialDeposit == initialDeposit;
     }
 }

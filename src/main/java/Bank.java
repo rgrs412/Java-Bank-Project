@@ -36,4 +36,8 @@ public class Bank {
             return false;
         }
     }
+
+    public boolean isValidInitialDeposit(String id, Double initialDeposit) {
+        return bankAccounts.get(id).isValidInitialDeposit(initialDeposit);
+    }
 }

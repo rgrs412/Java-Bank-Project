@@ -13,12 +13,7 @@ public class CommandValidatorTest {
     @BeforeEach
     void setUp() {
         bank = new Bank();
-        commandValidator = new CreateCommandValidator(bank);
-    }
-
-    @Test
-    void valid_command() {
-        assertTrue(commandValidator.validate(VALID_CREATE_COMMAND));
+        commandValidator = new CreateCheckingValidator(bank);
     }
 
     @Test
@@ -28,6 +23,6 @@ public class CommandValidatorTest {
 
     @Test
     void the_command_that_needs_to_be_validated_is_initially_null() {
-        assertEquals(null, commandValidator.getCommand());
+        assertEquals(null, commandValidator.getCommandArray());
     }
 }

@@ -1,22 +1,18 @@
 public abstract class CommandValidator {
 
     protected Bank bank;
-    private String command;
+    private String[] commandArray;
 
     public CommandValidator(Bank bank) {
         this.bank = bank;
     }
 
-    public String getCommand() {
-        return command;
-    }
-
-    public void setCommand(String command) {
-        this.command = command.toLowerCase();
-    }
-
     public String[] getCommandArray() {
-        return command.split(" ");
+        return commandArray;
+    }
+
+    public void setCommandArray(String command) {
+        commandArray = command.toLowerCase().split(" ");
     }
 
     abstract boolean validate(String command);
