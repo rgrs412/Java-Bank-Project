@@ -2,10 +2,12 @@ public abstract class BankAccount {
 
     protected double balance;
     protected String accountType;
+    protected double minimumInitialDeposit;
+    protected double maxDeposit;
     private double apr;
-    private int id;
+    private String id;
 
-    public BankAccount(int id, double apr) {
+    public BankAccount(String id, double apr) {
         this.apr = apr;
         this.id = id;
     }
@@ -18,7 +20,7 @@ public abstract class BankAccount {
         return apr;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
@@ -35,5 +37,13 @@ public abstract class BankAccount {
         if (balance < 0) {
             balance = 0;
         }
+    }
+
+    public boolean isValidInitialDeposit(Double initialDeposit) {
+        return initialDeposit >= minimumInitialDeposit;
+    }
+
+    public boolean isValidDeposit(Double depositAmount) {
+        return depositAmount <= maxDeposit;
     }
 }

@@ -3,29 +3,45 @@ import java.util.Map;
 
 public class Bank {
 
-    private Map<Integer, BankAccount> bankAccounts;
+    private Map<String, BankAccount> bankAccounts;
 
     public Bank() {
         bankAccounts = new HashMap<>();
     }
 
-    public Map<Integer, BankAccount> getBankAccounts() {
+    public Map<String, BankAccount> getBankAccounts() {
         return bankAccounts;
     }
 
-    public void addBankAccount(BankAccount bankAccount, int id) {
+    public void addBankAccount(BankAccount bankAccount, String id) {
         bankAccounts.put(id, bankAccount);
     }
 
-    public void deleteBankAccount(int id) {
+    public void deleteBankAccount(String id) {
         bankAccounts.remove(id);
     }
 
-    public void deposit(int id, double deposit) {
+    public void deposit(String id, double deposit) {
         bankAccounts.get(id).deposit(deposit);
     }
 
-    public void withdraw(int id, double withdrawal) {
+    public void withdraw(String id, double withdrawal) {
         bankAccounts.get(id).withdraw(withdrawal);
+    }
+
+    public boolean bankAccountExistsById(String id) {
+        if (bankAccounts.get(id) != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean isValidInitialDeposit(String id, Double initialDeposit) {
+        return bankAccounts.get(id).isValidInitialDeposit(initialDeposit);
+    }
+
+    public boolean isValidDeposit(String id, Double depositAmount) {
+        return bankAccounts.get(id).isValidDeposit(depositAmount);
     }
 }

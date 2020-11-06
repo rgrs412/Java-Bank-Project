@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class CheckingAccountTest {
 
     public static final double APR = 0.01;
-    public static final int ID = 12345678;
+    public static final String ID = "12345678";
     CheckingAccount checkingAccount;
 
     @BeforeEach
@@ -26,7 +26,7 @@ public class CheckingAccountTest {
 
     @Test
     void checking_account_has_the_right_id() {
-        assertEquals(12345678, checkingAccount.getId());
+        assertEquals("12345678", checkingAccount.getId());
     }
 
     @Test
