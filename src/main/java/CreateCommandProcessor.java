@@ -15,6 +15,9 @@ public class CreateCommandProcessor extends CommandProcessor {
             bank.addBankAccount(new CheckingAccount(id, apr), id);
         } else if (bankAccountType.equals("savings")) {
             bank.addBankAccount(new SavingsAccount(id, apr), id);
+        } else if (bankAccountType.equals("cd")) {
+            Double initialDeposit = Double.parseDouble(getCommandArray()[4]);
+            bank.addBankAccount(new CdAccount(id, apr, initialDeposit), id);
         }
     }
 
