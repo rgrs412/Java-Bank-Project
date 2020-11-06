@@ -21,6 +21,8 @@ public class CommandProcessor {
         this.command = getCommandArray()[0];
         if (this.command.equals("create")) {
             new CreateCommandProcessor(bank).processCommand(command);
+        } else if (this.command.equals("deposit")) {
+            new DepositCommandProcessor(bank).processCommand(command);
         }
     }
 }
