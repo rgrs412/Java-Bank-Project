@@ -13,6 +13,8 @@ public class CreateCommandProcessor extends CommandProcessor {
         setArguments(command);
         if (bankAccountType.equals("checking")) {
             bank.addBankAccount(new CheckingAccount(id, apr), id);
+        } else if (bankAccountType.equals("savings")) {
+            bank.addBankAccount(new SavingsAccount(id, apr), id);
         }
     }
 
