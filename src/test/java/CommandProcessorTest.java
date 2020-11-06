@@ -88,8 +88,23 @@ public class CommandProcessorTest {
     }
 
     @Test
-    void deposit_command_deposits_correct_amount_to_a_checking_account_with_money() {
+    void deposit_command_deposits_correct_amount_to_a_checking_account_that_already_has_money() {
         commandProcessor.processCommand(VALID_CREATE_CHECKING_COMMAND);
+        commandProcessor.processCommand(VALID_DEPOSIT_COMMAND);
+        commandProcessor.processCommand(VALID_DEPOSIT_COMMAND);
+        assertEquals(2000, bank.getBankAccounts().get(ID).getBalance());
+    }
+
+    @Test
+    void deposit_command_deposits_correct_amount_to_a_savings_account_that_was_just_created() {
+        commandProcessor.processCommand(VALID_CREATE_SAVINGS_COMMAND);
+        commandProcessor.processCommand(VALID_DEPOSIT_COMMAND);
+        assertEquals(1000, bank.getBankAccounts().get(ID).getBalance());
+    }
+
+    @Test
+    void deposit_command_deposits_correct_amount_to_a_savings_account_that_already_has_money() {
+        commandProcessor.processCommand(VALID_CREATE_SAVINGS_COMMAND);
         commandProcessor.processCommand(VALID_DEPOSIT_COMMAND);
         commandProcessor.processCommand(VALID_DEPOSIT_COMMAND);
         assertEquals(2000, bank.getBankAccounts().get(ID).getBalance());
