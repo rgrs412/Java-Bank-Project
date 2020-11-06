@@ -26,6 +26,11 @@ public class DepositCommandValidatorTest {
     }
 
     @Test
+    void deposit_into_account_that_does_not_exist_is_invalid() {
+        assertFalse(depositCommandValidator.validate(VALID_DEPOSIT_COMMAND));
+    }
+
+    @Test
     void deposit_command_with_less_than_3_arguments_is_invalid() {
         assertFalse(depositCommandValidator.validate("deposit 12345678"));
     }
@@ -44,35 +49,30 @@ public class DepositCommandValidatorTest {
     @Test
     void depositing_1000_into_checking_account_is_valid() {
         bank.addBankAccount(checkingAccount, ID);
-        depositCommandValidator.setCommandArray(VALID_DEPOSIT_COMMAND);
-        assertTrue(depositCommandValidator.isValidDeposit());
+        assertTrue(depositCommandValidator.validate(VALID_DEPOSIT_COMMAND));
     }
 
     @Test
     void depositing_1001_into_checking_account_is_valid() {
         bank.addBankAccount(checkingAccount, ID);
-        depositCommandValidator.setCommandArray("deposit 12345678 1001");
-        assertFalse(depositCommandValidator.isValidDeposit());
+        assertFalse(depositCommandValidator.validate("deposit 12345678 1001"));
     }
 
     @Test
     void depositing_2500_into_checking_account_is_valid() {
         bank.addBankAccount(savingsAccount, ID);
-        depositCommandValidator.setCommandArray("deposit 12345678 2500");
-        assertTrue(depositCommandValidator.isValidDeposit());
+        assertTrue(depositCommandValidator.validate("deposit 12345678 2500"));
     }
 
     @Test
     void depositing_2501_into_checking_account_is_invalid() {
         bank.addBankAccount(savingsAccount, ID);
-        depositCommandValidator.setCommandArray("deposit 12345678 2501");
-        assertFalse(depositCommandValidator.isValidDeposit());
+        assertFalse(depositCommandValidator.validate("deposit 12345678 2501"));
     }
 
     @Test
     void depositing_into_cd_account_is_invalid() {
         bank.addBankAccount(cdAccount, ID);
-        depositCommandValidator.setCommandArray(VALID_DEPOSIT_COMMAND);
-        assertFalse(depositCommandValidator.isValidDeposit());
+        assertFalse(depositCommandValidator.validate(VALID_DEPOSIT_COMMAND));
     }
 }
