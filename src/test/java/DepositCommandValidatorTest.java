@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class DepositCommandTest {
+public class DepositCommandValidatorTest {
 
     public static final String VALID_DEPOSIT_COMMAND = "deposit 12345678 1000";
     public static final String ID = "12345678";
@@ -23,6 +23,22 @@ public class DepositCommandTest {
         checkingAccount = new CheckingAccount(ID, APR);
         savingsAccount = new SavingsAccount(ID, APR);
         cdAccount = new CdAccount(ID, APR, 1000);
+    }
+
+    @Test
+    void deposit_command_with_less_than_3_arguments_is_invalid() {
+        assertFalse(depositCommandValidator.validate("deposit 12345678"));
+    }
+
+    @Test
+    void deposit_command_with_3_arguments_is_valid() {
+        bank.addBankAccount(checkingAccount, ID);
+        assertTrue(depositCommandValidator.validate(VALID_DEPOSIT_COMMAND));
+    }
+
+    @Test
+    void deposit_command_with_more_than_3_arguments_is_invalid() {
+        assertFalse(depositCommandValidator.validate(VALID_DEPOSIT_COMMAND + " abc"));
     }
 
     @Test

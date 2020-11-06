@@ -1,14 +1,20 @@
 public class DepositCommandValidator extends CommandValidator {
 
+    private static final int NUMBER_OF_DEPOSIT_COMMAND_ARGUMENTS = 3;
+
     public DepositCommandValidator(Bank bank) {
         super(bank);
     }
 
     @Override
-    boolean validate(String command) {
-        return false;
+    public boolean validate(String command) {
+        setCommandArray(command);
+        return depositCommandHasValidNumberOfArguments() && isValidDeposit();
     }
 
+    public boolean depositCommandHasValidNumberOfArguments() {
+        return getCommandArray().length == NUMBER_OF_DEPOSIT_COMMAND_ARGUMENTS;
+    }
 
     public boolean isValidDeposit() {
         String id = getCommandArray()[1];

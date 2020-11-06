@@ -15,26 +15,23 @@ public class CreateCommandValidatorTest {
     @BeforeEach
     void setUp() {
         bank = new Bank();
-        createCommandValidator = new CreateCheckingValidator(bank);
+        createCommandValidator = new CreateCommandValidator(bank);
         bankAccount = new CheckingAccount(ID, APR);
     }
 
     @Test
     void apr_that_is_not_in_percentage_form_is_invalid() {
-        createCommandValidator.setCommandArray("create checking 12345678 1.000");
-        assertFalse(createCommandValidator.aprIsPercentage());
+        assertFalse(createCommandValidator.validate("create checking 12345678 1.000"));
     }
 
     @Test
     void bank_account_id_that_is_not_an_8_digit_natural_number_is_invalid() {
-        createCommandValidator.setCommandArray("create checking 1234567 0.01");
-        assertFalse(createCommandValidator.bankAccountIdIs8DigitNaturalNumber());
+        assertFalse(createCommandValidator.validate("create checking 1234567 0.01"));
     }
 
     @Test
     void duplicate_account_id_is_invalid() {
         bank.addBankAccount(bankAccount, ID);
-        createCommandValidator.setCommandArray(VALID_CREATE_CHECKING_COMMAND);
-        assertFalse(createCommandValidator.bankAccountExistsById());
+        assertFalse(createCommandValidator.validate(VALID_CREATE_CHECKING_COMMAND));
     }
 }

@@ -9,7 +9,7 @@ public class CreateCdValidator extends CreateCommandValidator {
     @Override
     public boolean validate(String command) {
         setCommandArray(command);
-        return createCdCommandHasValidNumberOfArguments();
+        return createCdCommandHasValidNumberOfArguments() && isValidMinimumInitialDeposit();
     }
 
     public boolean createCdCommandHasValidNumberOfArguments() {
