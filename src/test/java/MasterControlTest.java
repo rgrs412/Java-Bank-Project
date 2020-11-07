@@ -10,7 +10,9 @@ public class MasterControlTest {
 
     public static final String TYPO_CREATE_COMMAND = "creat checking 12345678 1.0";
     public static final String TYPO_DEPOSIT_COMMAND = "depositt 12345678 100";
-    MasterControl masterControl;
+    public static final String VALID_CREATE_CHECKING_COMMAND = "create checking 12345678 1.0";
+    MasterControl
+            masterControl;
     Bank bank;
     List<String> input;
 
@@ -55,5 +57,15 @@ public class MasterControlTest {
         assertEquals(2, actual.size());
         assertEquals(TYPO_CREATE_COMMAND, actual.get(0));
         assertEquals(TYPO_DEPOSIT_COMMAND, actual.get(1));
+    }
+
+    @Test
+    void invalid_to_create_accounts_with_same_id() {
+        input.add(VALID_CREATE_CHECKING_COMMAND);
+        input.add(VALID_CREATE_CHECKING_COMMAND);
+
+        List<String> actual = masterControl.start(input);
+
+        assertSingleCommand(VALID_CREATE_CHECKING_COMMAND, actual);
     }
 }
