@@ -45,5 +45,15 @@ public class MasterControlTest {
         assertSingleCommand(TYPO_DEPOSIT_COMMAND, actual);
     }
 
+    @Test
+    void two_typo_commands_both_invalid() {
+        input.add(TYPO_CREATE_COMMAND);
+        input.add(TYPO_DEPOSIT_COMMAND);
 
+        List<String> actual = masterControl.start(input);
+
+        assertEquals(2, actual.size());
+        assertEquals(TYPO_CREATE_COMMAND, actual.get(0));
+        assertEquals(TYPO_DEPOSIT_COMMAND, actual.get(1));
+    }
 }

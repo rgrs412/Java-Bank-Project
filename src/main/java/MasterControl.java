@@ -16,7 +16,9 @@ public class MasterControl {
     }
 
     public List<String> start(List<String> input) {
-        commandStorage.addInvalidCommand(input.get(0));
+        for (String command : input) {
+            commandStorage.addInvalidCommand(command);
+        }
         return commandStorage.getInvalidCommands();
     }
 }
