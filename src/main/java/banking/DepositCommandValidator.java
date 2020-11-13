@@ -1,3 +1,5 @@
+package banking;
+
 public class DepositCommandValidator extends CommandValidator {
 
     private static final int NUMBER_OF_DEPOSIT_COMMAND_ARGUMENTS = 3;

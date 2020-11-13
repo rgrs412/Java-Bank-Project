@@ -1,3 +1,5 @@
+package banking;
+
 public class CreateCommandValidator extends CommandValidator {
 
     private String bankAccountType;

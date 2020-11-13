@@ -1,3 +1,5 @@
+package banking;
+
 public class DepositCommandProcessor extends CommandProcessor {
 
     private String id;

@@ -1,3 +1,5 @@
+package banking;
+
 public class CreateCheckingValidator extends CreateCommandValidator {
 
     private static final int NUMBER_OF_CREATE_CHECKING_ARGUMENTS = 4;

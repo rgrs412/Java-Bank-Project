@@ -1,3 +1,5 @@
+package banking;
+
 public class CreateCdValidator extends CreateCommandValidator {
 
     private static final int NUMBER_OF_CREATE_SAVINGS_ARGUMENTS = 5;
