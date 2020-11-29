@@ -17,7 +17,6 @@ public class DepositCommandValidatorTest {
     BankAccount savingsAccount;
     BankAccount cdAccount;
 
-
     @BeforeEach
     void setUp() {
         bank = new Bank();
