@@ -37,6 +37,14 @@ public class TimePasserTest {
     }
 
     @Test
+    void account_accrues_interest() {
+        bank.addBankAccount(checkingAccount, ID);
+        bank.deposit(ID, 100);
+        timerPasser.passMonths(1);
+        assertEquals(100.075, bank.getBankAccounts().get(ID).getBalance());
+    }
+
+    @Test
     void account_balance_is_deducted_25_if_balance_is_less_than_100() {
         bank.addBankAccount(checkingAccount, ID);
         bank.deposit(ID, 99);
@@ -50,13 +58,5 @@ public class TimePasserTest {
         bank.deposit(ID, 20);
         timerPasser.passMonths(1);
         assertEquals(0, bank.getBankAccounts().get(ID).getBalance());
-    }
-
-    @Test
-    void account_balance_is_not_deducted_if_balance_is_100_or_more() {
-        bank.addBankAccount(checkingAccount, ID);
-        bank.deposit(ID, 100);
-        timerPasser.passMonths(1);
-        assertEquals(100.075, bank.getBankAccounts().get(ID).getBalance());
     }
 }
