@@ -11,6 +11,6 @@ public class CdAccount extends BankAccount {
 
     @Override
     public boolean isValidWithdrawal(Double withdrawalAmount) {
-        return false;
+        return (monthsPassed >= 12) && (withdrawalAmount >= balance);
     }
 }

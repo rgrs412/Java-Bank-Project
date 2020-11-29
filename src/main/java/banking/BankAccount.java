@@ -8,6 +8,7 @@ public abstract class BankAccount {
     protected double maxDeposit;
     protected double maxWithdrawalAmount;
     protected int withdrawalsThisMonth;
+    protected int monthsPassed;
     private double apr;
     private String id;
     private AprCalculator aprCalculator;
@@ -15,6 +16,7 @@ public abstract class BankAccount {
     public BankAccount(String id, double apr) {
         this.apr = apr;
         this.id = id;
+        monthsPassed = 0;
         aprCalculator = new AprCalculator();
     }
 
@@ -64,7 +66,8 @@ public abstract class BankAccount {
                 withdraw(25);
             }
             withdrawalsThisMonth = 0;
-            balance += aprCalculator.calculateInterest(balance, apr);
+            monthsPassed += 1;
+            balance += aprCalculator.calculateInterest(this);
         }
     }
 }
