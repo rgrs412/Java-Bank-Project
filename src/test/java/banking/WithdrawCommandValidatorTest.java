@@ -96,4 +96,5 @@ public class WithdrawCommandValidatorTest {
         bank.getBankAccounts().get(ID).withdraw(1);
         assertFalse(withdrawCommandValidator.validate("withdraw 12345678 1000"));
     }
+
 }
