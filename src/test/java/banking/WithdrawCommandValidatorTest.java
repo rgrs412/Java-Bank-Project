@@ -41,4 +41,26 @@ public class WithdrawCommandValidatorTest {
         assertFalse(withdrawCommandValidator.validate(VALID_WITHDRAW_COMMAND + " abc"));
     }
 
+    @Test
+    void withdraw_from_account_that_does_not_exist_is_invalid() {
+        assertFalse(withdrawCommandValidator.validate(VALID_WITHDRAW_COMMAND));
+    }
+
+    @Test
+    void withdraw_400_from_checking_account_is_valid() {
+        bank.addBankAccount(checkingAccount, ID);
+        assertTrue(withdrawCommandValidator.validate("withdraw 12345678 400"));
+    }
+
+    @Test
+    void withdraw_less_than_400_from_checking_account_is_valid() {
+        bank.addBankAccount(checkingAccount, ID);
+        assertTrue(withdrawCommandValidator.validate(VALID_WITHDRAW_COMMAND));
+    }
+
+    @Test
+    void withdraw_more_than_400_from_checking_account_is_invalid() {
+        bank.addBankAccount(checkingAccount, ID);
+        assertFalse(withdrawCommandValidator.validate("withdraw 12345678 401"));
+    }
 }

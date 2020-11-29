@@ -46,4 +46,8 @@ public class Bank {
     public boolean isValidDeposit(String id, Double depositAmount) {
         return bankAccounts.get(id).isValidDeposit(depositAmount);
     }
+
+    public boolean isValidWithdraw(String id, Double withdrawAmount) {
+        return bankAccounts.get(id).isValidWithdraw(withdrawAmount);
+    }
 }

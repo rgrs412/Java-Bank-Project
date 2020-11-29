@@ -6,6 +6,7 @@ public abstract class BankAccount {
     protected String accountType;
     protected double minimumInitialDeposit;
     protected double maxDeposit;
+    protected double maxWithdraw;
     private double apr;
     private String id;
 
@@ -47,5 +48,9 @@ public abstract class BankAccount {
 
     public boolean isValidDeposit(Double depositAmount) {
         return depositAmount <= maxDeposit;
+    }
+
+    public boolean isValidWithdraw(Double withdrawAmount) {
+        return withdrawAmount <= maxWithdraw;
     }
 }
