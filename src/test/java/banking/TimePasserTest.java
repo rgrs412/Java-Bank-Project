@@ -29,6 +29,14 @@ public class TimePasserTest {
     }
 
     @Test
+    void account_is_not_closed_if_balance_is_more_than_0() {
+        bank.addBankAccount(checkingAccount, ID);
+        bank.deposit(ID, 1);
+        timerPasser.passMonths(1);
+        assertEquals(ID, bank.getBankAccounts().get(ID).getId());
+    }
+
+    @Test
     void account_is_deducted_25_if_balance_is_less_than_100() {
         bank.addBankAccount(checkingAccount, ID);
         bank.deposit(ID, 50);
