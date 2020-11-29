@@ -15,7 +15,7 @@ public class WithdrawCommandValidator extends CommandValidator {
         setCommandArray(command);
         if (withdrawCommandHasValidNumberOfArguments()) {
             setArguments();
-            return bankAccountExistsById() && isValidWithdraw();
+            return bankAccountExistsById() && isValidWithdrawal();
         } else {
             return false;
         }
@@ -38,8 +38,8 @@ public class WithdrawCommandValidator extends CommandValidator {
         }
     }
 
-    public boolean isValidWithdraw() {
-        Double withdrawAmount = Double.parseDouble(amount);
-        return bank.isValidWithdraw(id, withdrawAmount);
+    public boolean isValidWithdrawal() {
+        Double withdrawalAmount = Double.parseDouble(amount);
+        return bank.isValidWithdrawal(id, withdrawalAmount);
     }
 }

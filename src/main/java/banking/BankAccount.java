@@ -6,7 +6,8 @@ public abstract class BankAccount {
     protected String accountType;
     protected double minimumInitialDeposit;
     protected double maxDeposit;
-    protected double maxWithdraw;
+    protected double maxWithdrawalAmount;
+    protected int withdrawalsThisMonth;
     private double apr;
     private String id;
 
@@ -36,7 +37,8 @@ public abstract class BankAccount {
     }
 
     public void withdraw(double withdrawal) {
-        balance = balance - withdrawal;
+        balance -= withdrawal;
+        withdrawalsThisMonth += 1;
         if (balance < 0) {
             balance = 0;
         }
@@ -50,7 +52,5 @@ public abstract class BankAccount {
         return depositAmount <= maxDeposit;
     }
 
-    public boolean isValidWithdraw(Double withdrawAmount) {
-        return withdrawAmount <= maxWithdraw;
-    }
+    public abstract boolean isValidWithdrawal(Double withdrawalAmount);
 }

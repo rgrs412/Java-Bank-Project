@@ -7,7 +7,11 @@ public class CheckingAccount extends BankAccount {
         accountType = "checking";
         minimumInitialDeposit = 0;
         maxDeposit = 1000;
-        maxWithdraw = 400;
+        maxWithdrawalAmount = 400;
     }
 
+    @Override
+    public boolean isValidWithdrawal(Double withdrawalAmount) {
+        return withdrawalAmount <= maxWithdrawalAmount;
+    }
 }

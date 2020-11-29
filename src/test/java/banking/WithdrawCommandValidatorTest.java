@@ -55,12 +55,45 @@ public class WithdrawCommandValidatorTest {
     @Test
     void withdraw_less_than_400_from_checking_account_is_valid() {
         bank.addBankAccount(checkingAccount, ID);
-        assertTrue(withdrawCommandValidator.validate(VALID_WITHDRAW_COMMAND));
+        assertTrue(withdrawCommandValidator.validate("withdraw 12345678 399"));
     }
 
     @Test
     void withdraw_more_than_400_from_checking_account_is_invalid() {
         bank.addBankAccount(checkingAccount, ID);
         assertFalse(withdrawCommandValidator.validate("withdraw 12345678 401"));
+    }
+
+    @Test
+    void withdraw_1000_from_savings_account_is_valid() {
+        bank.addBankAccount(savingsAccount, ID);
+        assertTrue(withdrawCommandValidator.validate("withdraw 12345678 1000"));
+    }
+
+    @Test
+    void withdraw_less_than_1000_from_savings_account_is_valid() {
+        bank.addBankAccount(savingsAccount, ID);
+        assertTrue(withdrawCommandValidator.validate("withdraw 12345678 999"));
+    }
+
+    @Test
+    void withdraw_more_than_1000_from_savings_account_is_invalid() {
+        bank.addBankAccount(savingsAccount, ID);
+        assertFalse(withdrawCommandValidator.validate("withdraw 12345678 1001"));
+    }
+
+    @Test
+    void withdraw_once_a_month_from_savings_account_is_valid() {
+        bank.addBankAccount(savingsAccount, ID);
+        bank.getBankAccounts().get(ID).withdraw(1);
+        assertTrue(withdrawCommandValidator.validate("withdraw 12345678 1000"));
+    }
+
+    @Test
+    void withdraw_more_than_once_a_month_from_savings_account_is_invalid() {
+        bank.addBankAccount(savingsAccount, ID);
+        bank.getBankAccounts().get(ID).withdraw(1);
+        bank.getBankAccounts().get(ID).withdraw(1);
+        assertFalse(withdrawCommandValidator.validate("withdraw 12345678 1000"));
     }
 }

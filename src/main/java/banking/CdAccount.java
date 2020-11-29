@@ -8,4 +8,9 @@ public class CdAccount extends BankAccount {
         balance = initial_deposit;
         minimumInitialDeposit = 1000;
     }
+
+    @Override
+    public boolean isValidWithdrawal(Double withdrawalAmount) {
+        return false;
+    }
 }
