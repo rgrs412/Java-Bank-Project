@@ -14,14 +14,8 @@ public class TimePasser {
 
     public void passMonths(int months) {
         bankAccounts = new ArrayList<>(bank.getBankAccounts().values());
-        for (int i = 0; i < months; i++) {
-            for (BankAccount bankAccount : bankAccounts) {
-                if (bankAccount.balance == 0) {
-                    bank.deleteBankAccount(bankAccount.getId());
-                } else if (bankAccount.balance < 100) {
-                    bank.withdraw(bankAccount.getId(), 25);
-                }
-            }
+        for (BankAccount bankAccount : bankAccounts) {
+            bankAccount.passMonths(months, bank);
         }
     }
 }

@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class TimePasserTest {
 
     public static final String ID = "12345678";
-    public static final Double APR = 0.01;
+    public static final Double APR = 0.90;
 
     Bank bank;
     TimePasser timerPasser;
@@ -41,7 +41,7 @@ public class TimePasserTest {
         bank.addBankAccount(checkingAccount, ID);
         bank.deposit(ID, 99);
         timerPasser.passMonths(1);
-        assertEquals(74, bank.getBankAccounts().get(ID).getBalance());
+        assertEquals(74.0555, bank.getBankAccounts().get(ID).getBalance());
     }
 
     @Test
@@ -57,6 +57,6 @@ public class TimePasserTest {
         bank.addBankAccount(checkingAccount, ID);
         bank.deposit(ID, 100);
         timerPasser.passMonths(1);
-        assertEquals(100, bank.getBankAccounts().get(ID).getBalance());
+        assertEquals(100.075, bank.getBankAccounts().get(ID).getBalance());
     }
 }
