@@ -15,6 +15,7 @@ public class WithdrawCommandValidatorTest {
     BankAccount checkingAccount;
     BankAccount savingsAccount;
     BankAccount cdAccount;
+    TimePasser timePasser;
 
     @BeforeEach
     void setUp() {
@@ -23,6 +24,7 @@ public class WithdrawCommandValidatorTest {
         checkingAccount = new CheckingAccount(ID, APR);
         savingsAccount = new SavingsAccount(ID, APR);
         cdAccount = new CdAccount(ID, APR, 1000);
+        timePasser = new TimePasser(bank);
     }
 
     @Test
@@ -85,16 +87,23 @@ public class WithdrawCommandValidatorTest {
     @Test
     void withdraw_once_a_month_from_savings_account_is_valid() {
         bank.addBankAccount(savingsAccount, ID);
-        bank.getBankAccounts().get(ID).withdraw(1);
         assertTrue(withdrawCommandValidator.validate("withdraw 12345678 1000"));
     }
 
     @Test
     void withdraw_more_than_once_a_month_from_savings_account_is_invalid() {
         bank.addBankAccount(savingsAccount, ID);
-        bank.getBankAccounts().get(ID).withdraw(1);
-        bank.getBankAccounts().get(ID).withdraw(1);
+        bank.withdraw(ID, 1);
         assertFalse(withdrawCommandValidator.validate("withdraw 12345678 1000"));
+    }
+
+    @Test
+    void withdraw_from_savings_account_after_one_month_has_passed_is_valid() {
+        bank.addBankAccount(savingsAccount, ID);
+        bank.deposit(ID, 2);
+        bank.withdraw(ID, 1);
+        timePasser.passMonths(1);
+        assertTrue(withdrawCommandValidator.validate("withdraw 12345678 1000"));
     }
 
 }

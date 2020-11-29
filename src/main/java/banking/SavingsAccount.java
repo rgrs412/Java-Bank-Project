@@ -15,6 +15,6 @@ public class SavingsAccount extends BankAccount {
 
     @Override
     public boolean isValidWithdrawal(Double withdrawalAmount) {
-        return (withdrawalAmount <= maxWithdrawalAmount) && (withdrawalsThisMonth <= MONTHLY_WITHDRAWAL_LIMIT);
+        return (withdrawalAmount <= maxWithdrawalAmount) && (withdrawalsThisMonth < MONTHLY_WITHDRAWAL_LIMIT);
     }
 }

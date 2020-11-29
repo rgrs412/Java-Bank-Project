@@ -63,6 +63,7 @@ public abstract class BankAccount {
             } else if (balance < 100) {
                 withdraw(25);
             }
+            withdrawalsThisMonth = 0;
             balance += aprCalculator.calculateInterest(balance, apr);
         }
     }
