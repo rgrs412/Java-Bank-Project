@@ -43,4 +43,12 @@ public class TimePasserTest {
         timerPasser.passMonths(1);
         assertEquals(25, bank.getBankAccounts().get(ID).getBalance());
     }
+
+    @Test
+    void account_cannot_be_deducted_below_0() {
+        bank.addBankAccount(checkingAccount, ID);
+        bank.deposit(ID, 20);
+        timerPasser.passMonths(1);
+        assertEquals(0, bank.getBankAccounts().get(ID).getBalance());
+    }
 }
