@@ -1,0 +1,44 @@
+package banking;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+public class WithdrawCommandValidatorTest {
+    public static final String VALID_WITHDRAW_COMMAND = "withdraw 12345678 300";
+    public static final String ID = "12345678";
+    public static final Double APR = 0.01;
+    WithdrawCommandValidator withdrawCommandValidator;
+    Bank bank;
+    BankAccount checkingAccount;
+    BankAccount savingsAccount;
+    BankAccount cdAccount;
+
+    @BeforeEach
+    void setUp() {
+        bank = new Bank();
+        withdrawCommandValidator = new WithdrawCommandValidator(bank);
+        checkingAccount = new CheckingAccount(ID, APR);
+        savingsAccount = new SavingsAccount(ID, APR);
+        cdAccount = new CdAccount(ID, APR, 1000);
+    }
+
+    @Test
+    void withdraw_command_with_less_than_3_arguments_is_invalid() {
+        assertFalse(withdrawCommandValidator.validate("withdraw 12345678"));
+    }
+
+    @Test
+    void withdraw_command_with_3_arguments_is_valid() {
+        bank.addBankAccount(checkingAccount, ID);
+        assertTrue(withdrawCommandValidator.validate(VALID_WITHDRAW_COMMAND));
+    }
+
+    @Test
+    void withdraw_command_with_more_than_3_arguments_is_invalid() {
+        assertFalse(withdrawCommandValidator.validate(VALID_WITHDRAW_COMMAND + " abc"));
+    }
+
+}
