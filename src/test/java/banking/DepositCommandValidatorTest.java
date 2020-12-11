@@ -33,7 +33,6 @@ public class DepositCommandValidatorTest {
 
     @Test
     void deposit_command_with_less_than_2_arguments_is_invalid() {
-        bank.addBankAccount(checkingAccount, ID);
         assertFalse(depositCommandValidator.validate("deposit 12345678"));
     }
 
@@ -45,7 +44,6 @@ public class DepositCommandValidatorTest {
 
     @Test
     void deposit_command_with_more_than_2_arguments_is_invalid() {
-        bank.addBankAccount(checkingAccount, ID);
         assertFalse(depositCommandValidator.validate(VALID_DEPOSIT_COMMAND + " abc"));
     }
 

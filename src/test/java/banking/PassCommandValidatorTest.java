@@ -23,13 +23,35 @@ public class PassCommandValidatorTest {
     }
 
     @Test
-    void pass_command_with_2_arguments_is_valid() {
+    void pass_command_with_1_arguments_is_valid() {
         assertTrue(passCommandValidator.validate(VALID_PASS_COMMAND));
     }
 
     @Test
-    void withdraw_command_with_more_than_2_arguments_is_invalid() {
+    void pass_command_with_more_than_1_arguments_is_invalid() {
         assertFalse(passCommandValidator.validate(VALID_PASS_COMMAND + " abc"));
     }
 
+    @Test
+    void pass_0_month_is_invalid() {
+        assertFalse(passCommandValidator.validate("pass 0"));
+    }
+
+    @Test
+    void pass_negative_months_is_invalid() {
+        assertFalse(passCommandValidator.validate("pass -1"));
+    }
+
+    @Test
+    void pass_decimal_months_is_invalid() {
+        assertFalse(passCommandValidator.validate("pass 1.1"));
+    }
+
+    @Test
+    void pass_months_more_than_one_time_is_valid() {
+        TimePasser timePasser = new TimePasser(bank);
+        timePasser.passMonths(1);
+
+        assertTrue(passCommandValidator.validate(VALID_PASS_COMMAND));
+    }
 }

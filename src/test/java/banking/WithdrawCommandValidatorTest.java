@@ -29,7 +29,6 @@ public class WithdrawCommandValidatorTest {
 
     @Test
     void withdraw_command_with_less_than_2_arguments_is_invalid() {
-        bank.addBankAccount(checkingAccount, ID);
         assertFalse(withdrawCommandValidator.validate("withdraw 12345678"));
     }
 
@@ -41,7 +40,6 @@ public class WithdrawCommandValidatorTest {
 
     @Test
     void withdraw_command_with_more_than_2_arguments_is_invalid() {
-        bank.addBankAccount(checkingAccount, ID);
         assertFalse(withdrawCommandValidator.validate(VALID_WITHDRAW_COMMAND + " abc"));
     }
 
