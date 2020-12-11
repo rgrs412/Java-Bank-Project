@@ -11,6 +11,7 @@ public class CommandValidatorTest {
     public static final String VALID_CREATE_COMMAND = "create checking 12345678 0.01";
     public static final String VALID_DEPOSIT_COMMAND = "deposit 12345678 1000";
     public static final String VALID_WITHDRAW_COMMAND = "withdraw 12345678 300";
+    public static final String VALID_PASS_COMMAND = "pass 1";
     public static final String ID = "12345678";
     public static final Double APR = 0.01;
     CommandValidator commandValidator;
@@ -39,6 +40,11 @@ public class CommandValidatorTest {
     void valid_withdraw_command_is_valid() {
         bank.addBankAccount(checkingAccount, ID);
         assertTrue(commandValidator.validate(VALID_WITHDRAW_COMMAND));
+    }
+
+    @Test
+    void valid_pass_command_is_valid() {
+        assertTrue(commandValidator.validate(VALID_PASS_COMMAND));
     }
 
     @Test
