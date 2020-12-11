@@ -2,7 +2,7 @@ package banking;
 
 public class CreateCheckingValidator extends CreateCommandValidator {
 
-    private static final int NUMBER_OF_CREATE_CHECKING_ARGUMENTS = 4;
+    private static final int CREATE_CHECKING_COMMAND_ARRAY_LENGTH = 4;
 
     public CreateCheckingValidator(Bank bank) {
         super(bank);
@@ -15,6 +15,6 @@ public class CreateCheckingValidator extends CreateCommandValidator {
     }
 
     public boolean createCheckingCommandHasValidNumberOfArguments() {
-        return getCommandArray().length == NUMBER_OF_CREATE_CHECKING_ARGUMENTS;
+        return getCommandArray().length == CREATE_CHECKING_COMMAND_ARRAY_LENGTH;
     }
 }

@@ -2,7 +2,7 @@ package banking;
 
 public class WithdrawCommandValidator extends CommandValidator {
 
-    private static final int NUMBER_OF_WITHDRAW_COMMAND_ARGUMENTS = 3;
+    private static final int WITHDRAW_COMMAND_ARRAY_LENGTH = 3;
     private String id;
     private String amount;
 
@@ -27,7 +27,7 @@ public class WithdrawCommandValidator extends CommandValidator {
     }
 
     public boolean withdrawCommandHasValidNumberOfArguments() {
-        return getCommandArray().length == NUMBER_OF_WITHDRAW_COMMAND_ARGUMENTS;
+        return getCommandArray().length == WITHDRAW_COMMAND_ARRAY_LENGTH;
     }
 
     public boolean bankAccountExistsById() {

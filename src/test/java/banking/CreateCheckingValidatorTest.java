@@ -23,17 +23,17 @@ public class CreateCheckingValidatorTest {
     }
 
     @Test
-    void create_checking_command_with_less_than_4_arguments_is_invalid() {
+    void create_checking_command_with_less_than_3_arguments_is_invalid() {
         assertFalse(createCheckingValidator.validate("create checking 12345678"));
     }
 
     @Test
-    void create_checking_command_with_4_arguments_is_valid() {
+    void create_checking_command_with_3_arguments_is_valid() {
         assertTrue(createCheckingValidator.validate(VALID_CREATE_CHECKING_COMMAND));
     }
 
     @Test
-    void create_checking_command_with_more_than_4_arguments_is_invalid() {
+    void create_checking_command_with_more_than_3_arguments_is_invalid() {
         assertFalse(createCheckingValidator.validate(VALID_CREATE_CHECKING_COMMAND + " abc"));
     }
 }

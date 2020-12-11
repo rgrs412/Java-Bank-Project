@@ -23,17 +23,17 @@ public class CreateSavingsValidatorTest {
     }
 
     @Test
-    void create_savings_command_with_less_than_4_arguments_is_invalid() {
+    void create_savings_command_with_less_than_3_arguments_is_invalid() {
         assertFalse(createSavingsValidator.validate("create savings 12345678"));
     }
 
     @Test
-    void create_savings_command_with_4_arguments_is_valid() {
+    void create_savings_command_with_3_arguments_is_valid() {
         assertTrue(createSavingsValidator.validate(VALID_CREATE_SAVINGS_COMMAND));
     }
 
     @Test
-    void create_savings_command_with_more_than_4_arguments_is_invalid() {
+    void create_savings_command_with_more_than_3_arguments_is_invalid() {
         assertFalse(createSavingsValidator.validate(VALID_CREATE_SAVINGS_COMMAND + " abc"));
     }
 }

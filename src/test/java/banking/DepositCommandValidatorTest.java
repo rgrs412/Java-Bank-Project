@@ -32,18 +32,20 @@ public class DepositCommandValidatorTest {
     }
 
     @Test
-    void deposit_command_with_less_than_3_arguments_is_invalid() {
+    void deposit_command_with_less_than_2_arguments_is_invalid() {
+        bank.addBankAccount(checkingAccount, ID);
         assertFalse(depositCommandValidator.validate("deposit 12345678"));
     }
 
     @Test
-    void deposit_command_with_3_arguments_is_valid() {
+    void deposit_command_with_2_arguments_is_valid() {
         bank.addBankAccount(checkingAccount, ID);
         assertTrue(depositCommandValidator.validate(VALID_DEPOSIT_COMMAND));
     }
 
     @Test
-    void deposit_command_with_more_than_3_arguments_is_invalid() {
+    void deposit_command_with_more_than_2_arguments_is_invalid() {
+        bank.addBankAccount(checkingAccount, ID);
         assertFalse(depositCommandValidator.validate(VALID_DEPOSIT_COMMAND + " abc"));
     }
 

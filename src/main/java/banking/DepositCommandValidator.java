@@ -2,7 +2,7 @@ package banking;
 
 public class DepositCommandValidator extends CommandValidator {
 
-    private static final int NUMBER_OF_DEPOSIT_COMMAND_ARGUMENTS = 3;
+    private static final int DEPOSIT_COMMAND_ARRAY_LENGTH = 3;
     private String id;
     private String amount;
 
@@ -27,7 +27,7 @@ public class DepositCommandValidator extends CommandValidator {
     }
 
     public boolean depositCommandHasValidNumberOfArguments() {
-        return getCommandArray().length == NUMBER_OF_DEPOSIT_COMMAND_ARGUMENTS;
+        return getCommandArray().length == DEPOSIT_COMMAND_ARRAY_LENGTH;
     }
 
     public boolean isValidDeposit() {

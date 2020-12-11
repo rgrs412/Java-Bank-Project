@@ -2,7 +2,7 @@ package banking;
 
 public class CreateCdValidator extends CreateCommandValidator {
 
-    private static final int NUMBER_OF_CREATE_SAVINGS_ARGUMENTS = 5;
+    private static final int CREATE_CD_COMMAND_ARRAY_LENGTH = 5;
 
     public CreateCdValidator(Bank bank) {
         super(bank);
@@ -15,7 +15,7 @@ public class CreateCdValidator extends CreateCommandValidator {
     }
 
     public boolean createCdCommandHasValidNumberOfArguments() {
-        return getCommandArray().length == NUMBER_OF_CREATE_SAVINGS_ARGUMENTS;
+        return getCommandArray().length == CREATE_CD_COMMAND_ARRAY_LENGTH;
     }
 
     public boolean isValidMinimumInitialDeposit() {

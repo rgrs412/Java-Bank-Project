@@ -28,18 +28,20 @@ public class WithdrawCommandValidatorTest {
     }
 
     @Test
-    void withdraw_command_with_less_than_3_arguments_is_invalid() {
+    void withdraw_command_with_less_than_2_arguments_is_invalid() {
+        bank.addBankAccount(checkingAccount, ID);
         assertFalse(withdrawCommandValidator.validate("withdraw 12345678"));
     }
 
     @Test
-    void withdraw_command_with_3_arguments_is_valid() {
+    void withdraw_command_with_2_arguments_is_valid() {
         bank.addBankAccount(checkingAccount, ID);
         assertTrue(withdrawCommandValidator.validate(VALID_WITHDRAW_COMMAND));
     }
 
     @Test
-    void withdraw_command_with_more_than_3_arguments_is_invalid() {
+    void withdraw_command_with_more_than_2_arguments_is_invalid() {
+        bank.addBankAccount(checkingAccount, ID);
         assertFalse(withdrawCommandValidator.validate(VALID_WITHDRAW_COMMAND + " abc"));
     }
 
