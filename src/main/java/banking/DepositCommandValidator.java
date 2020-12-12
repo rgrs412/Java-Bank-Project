@@ -36,10 +36,6 @@ public class DepositCommandValidator extends CommandValidator {
     }
 
     public boolean bankAccountExistsById() {
-        if (bank.bankAccountExistsById(id)) {
-            return true;
-        } else {
-            return false;
-        }
+        return bank.bankAccountExistsById(id);
     }
 }

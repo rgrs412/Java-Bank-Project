@@ -31,11 +31,7 @@ public class WithdrawCommandValidator extends CommandValidator {
     }
 
     public boolean bankAccountExistsById() {
-        if (bank.bankAccountExistsById(id)) {
-            return true;
-        } else {
-            return false;
-        }
+        return bank.bankAccountExistsById(id);
     }
 
     public boolean isValidWithdrawal() {
