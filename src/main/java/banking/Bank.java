@@ -31,6 +31,11 @@ public class Bank {
         bankAccounts.get(id).withdraw(withdrawal);
     }
 
+    public void transfer(String fromId, String toId, double amount) {
+        withdraw(fromId, amount);
+        deposit(toId, amount);
+    }
+
     public boolean bankAccountExistsById(String id) {
         if (bankAccounts.get(id) != null) {
             return true;
