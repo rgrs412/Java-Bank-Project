@@ -19,7 +19,7 @@ public class CommandProcessorTest {
     }
 
     @Test
-    void invalid_command_type_is_not_processed() {
+    void invalid_command_is_not_processed() {
         commandProcessor.processCommand(INVALID_CREATE_CHECKING_COMMAND);
         assertEquals(null, bank.getBankAccounts().get(ID));
     }
