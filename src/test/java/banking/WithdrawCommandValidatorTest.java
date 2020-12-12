@@ -107,9 +107,8 @@ public class WithdrawCommandValidatorTest {
     }
 
     @Test
-    void withdraw_from_cd_account_before_12_month_has_passed_is_invalid() {
+    void full_withdrawal_from_cd_account_before_12_month_has_passed_is_invalid() {
         bank.addBankAccount(cdAccount, ID);
-        bank.deposit(ID, 100);
         timePasser.passMonths(11);
         assertFalse(withdrawCommandValidator.validate(VALID_WITHDRAW_COMMAND));
     }
@@ -117,7 +116,6 @@ public class WithdrawCommandValidatorTest {
     @Test
     void full_withdrawal_from_cd_account_after_12_month_has_passed_is_valid() {
         bank.addBankAccount(cdAccount, ID);
-        bank.deposit(ID, 100);
         timePasser.passMonths(12);
         assertTrue(withdrawCommandValidator.validate("withdraw 12345678 " + cdAccount.getBalance()));
     }
@@ -125,7 +123,6 @@ public class WithdrawCommandValidatorTest {
     @Test
     void withdrawing_less_than_cd_account_balance_after_12_months_has_passed_is_invalid() {
         bank.addBankAccount(cdAccount, ID);
-        bank.deposit(ID, 100);
         timePasser.passMonths(12);
         assertFalse(withdrawCommandValidator.validate(VALID_WITHDRAW_COMMAND));
     }
@@ -133,7 +130,6 @@ public class WithdrawCommandValidatorTest {
     @Test
     void withdrawing_more_than_cd_account_balance_after_12_months_has_passed_is_valid() {
         bank.addBankAccount(cdAccount, ID);
-        bank.deposit(ID, 100);
         timePasser.passMonths(12);
         assertTrue(withdrawCommandValidator.validate("withdraw 12345678 2000"));
     }

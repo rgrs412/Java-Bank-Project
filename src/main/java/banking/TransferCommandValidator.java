@@ -16,7 +16,7 @@ public class TransferCommandValidator extends CommandValidator {
         setCommandArray(command);
         if (transferCommandHasValidNumberOfArguments()) {
             setArguments();
-            return bankAccountExistsById();
+            return bankAccountExistsById() && isValidTransferAmount();
         } else {
             return false;
         }
@@ -26,6 +26,11 @@ public class TransferCommandValidator extends CommandValidator {
         fromId = getCommandArray()[1];
         toId = getCommandArray()[2];
         amount = getCommandArray()[3];
+    }
+
+    public boolean isValidTransferAmount() {
+        Double transferAmount = Double.parseDouble(amount);
+        return bank.isValidTransfer(fromId, toId, transferAmount);
     }
 
     public boolean transferCommandHasValidNumberOfArguments() {

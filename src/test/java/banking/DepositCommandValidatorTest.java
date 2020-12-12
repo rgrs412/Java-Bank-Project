@@ -54,19 +54,19 @@ public class DepositCommandValidatorTest {
     }
 
     @Test
-    void depositing_1001_into_checking_account_is_valid() {
+    void depositing_1001_into_checking_account_is_invalid() {
         bank.addBankAccount(checkingAccount, ID);
         assertFalse(depositCommandValidator.validate("deposit 12345678 1001"));
     }
 
     @Test
-    void depositing_2500_into_checking_account_is_valid() {
+    void depositing_2500_into_savings_account_is_valid() {
         bank.addBankAccount(savingsAccount, ID);
         assertTrue(depositCommandValidator.validate("deposit 12345678 2500"));
     }
 
     @Test
-    void depositing_2501_into_checking_account_is_invalid() {
+    void depositing_2501_into_savings_account_is_invalid() {
         bank.addBankAccount(savingsAccount, ID);
         assertFalse(depositCommandValidator.validate("deposit 12345678 2501"));
     }

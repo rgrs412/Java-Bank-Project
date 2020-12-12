@@ -99,6 +99,17 @@ public class BankTest {
     }
 
     @Test
+    void money_transferred_from_account_is_equal_to_money_transferred_into_account() {
+        bank.addBankAccount(bankAccount, ID);
+        bank.addBankAccount(bankAccount2, ID_TWO);
+        bank.deposit(ID, 1);
+        bank.transfer(ID, ID_TWO, 2);
+
+        assertEquals(0, bank.getBankAccounts().get(ID).getBalance());
+        assertEquals(1, bank.getBankAccounts().get(ID_TWO).getBalance());
+    }
+
+    @Test
     void bank_account_balance_cannot_go_below_0() {
         bank.addBankAccount(bankAccount, ID);
         bank.withdraw(ID, WITHDRAWAL);

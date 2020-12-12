@@ -32,8 +32,13 @@ public class Bank {
     }
 
     public void transfer(String fromId, String toId, double amount) {
+        double beforeWithdrawalAmount = bankAccounts.get(fromId).getBalance();
         withdraw(fromId, amount);
-        deposit(toId, amount);
+        if (bankAccounts.get(fromId).getBalance() == 0) {
+            deposit(toId, beforeWithdrawalAmount);
+        } else {
+            deposit(toId, amount);
+        }
     }
 
     public boolean bankAccountExistsById(String id) {
@@ -54,5 +59,9 @@ public class Bank {
 
     public boolean isValidWithdrawal(String id, Double withdrawalAmount) {
         return bankAccounts.get(id).isValidWithdrawal(withdrawalAmount);
+    }
+
+    public boolean isValidTransfer(String fromId, String toId, Double transferAmount) {
+        return isValidWithdrawal(fromId, transferAmount) && isValidDeposit(toId, transferAmount);
     }
 }

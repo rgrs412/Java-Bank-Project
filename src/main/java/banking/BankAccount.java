@@ -53,7 +53,7 @@ public abstract class BankAccount {
     }
 
     public boolean isValidDeposit(Double depositAmount) {
-        return depositAmount <= maxDeposit;
+        return (depositAmount <= maxDeposit) && (accountType != "cd");
     }
 
     public abstract boolean isValidWithdrawal(Double withdrawalAmount);
