@@ -1,10 +1,14 @@
 package banking;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class BankAccount {
 
     protected double balance;
     protected String accountType;
-    protected double minimumInitialDeposit;
     protected double maxDeposit;
     protected double maxWithdrawalAmount;
     protected int withdrawalsThisMonth;
@@ -12,16 +16,32 @@ public abstract class BankAccount {
     private double apr;
     private String id;
     private AprCalculator aprCalculator;
+    private List<String> transactionHistory;
 
     public BankAccount(String id, double apr) {
         this.apr = apr;
         this.id = id;
         monthsPassed = 0;
         aprCalculator = new AprCalculator();
+        transactionHistory = new ArrayList<>();
+    }
+
+    public List<String> getTransactionHistory() {
+        return transactionHistory;
     }
 
     public String getAccountType() {
         return accountType;
+    }
+
+    public String getAccountState() {
+        DecimalFormat decimalFormat = new DecimalFormat("0.00");
+        decimalFormat.setRoundingMode(RoundingMode.FLOOR);
+
+        String truncatedBalance = decimalFormat.format(balance);
+        String truncatedApr = decimalFormat.format(apr);
+        String capitalizedAccountType = accountType.substring(0, 1).toUpperCase() + accountType.substring(1);
+        return String.format("%s %s %s %s", capitalizedAccountType, id, truncatedBalance, truncatedApr);
     }
 
     public double getApr() {
@@ -48,10 +68,6 @@ public abstract class BankAccount {
         }
     }
 
-    public boolean isValidInitialDeposit(Double initialDeposit) {
-        return initialDeposit >= minimumInitialDeposit;
-    }
-
     public boolean isValidDeposit(Double depositAmount) {
         return (depositAmount <= maxDeposit) && (accountType != "cd");
     }
@@ -70,4 +86,5 @@ public abstract class BankAccount {
             balance += aprCalculator.calculateInterest(this);
         }
     }
+
 }

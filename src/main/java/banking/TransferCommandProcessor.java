@@ -13,6 +13,8 @@ public class TransferCommandProcessor extends CommandProcessor {
     @Override
     public void processCommand(String command) {
         setArguments(command);
+        bank.getBankAccounts().get(toId).getTransactionHistory().add(command);
+        bank.getBankAccounts().get(fromId).getTransactionHistory().add(command);
         double transferAmount = Double.parseDouble(amount);
         bank.transfer(fromId, toId, transferAmount);
     }

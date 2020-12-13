@@ -6,7 +6,6 @@ public class CdAccount extends BankAccount {
         super(id, apr);
         accountType = "cd";
         balance = initial_deposit;
-        minimumInitialDeposit = 1000;
     }
 
     @Override

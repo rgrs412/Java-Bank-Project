@@ -1,6 +1,6 @@
 package banking;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class Bank {
@@ -8,7 +8,7 @@ public class Bank {
     private Map<String, BankAccount> bankAccounts;
 
     public Bank() {
-        bankAccounts = new HashMap<>();
+        bankAccounts = new LinkedHashMap<>();
     }
 
     public Map<String, BankAccount> getBankAccounts() {
@@ -49,9 +49,6 @@ public class Bank {
         }
     }
 
-    public boolean isValidInitialDeposit(String id, Double initialDeposit) {
-        return bankAccounts.get(id).isValidInitialDeposit(initialDeposit);
-    }
 
     public boolean isValidDeposit(String id, Double depositAmount) {
         return bankAccounts.get(id).isValidDeposit(depositAmount);

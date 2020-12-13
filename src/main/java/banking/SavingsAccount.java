@@ -7,7 +7,6 @@ public class SavingsAccount extends BankAccount {
     public SavingsAccount(String id, double apr) {
         super(id, apr);
         accountType = "savings";
-        minimumInitialDeposit = 0;
         maxDeposit = 2500;
         maxWithdrawalAmount = 1000;
         withdrawalsThisMonth = 0;
@@ -17,4 +16,5 @@ public class SavingsAccount extends BankAccount {
     public boolean isValidWithdrawal(Double withdrawalAmount) {
         return (withdrawalAmount <= maxWithdrawalAmount) && (withdrawalsThisMonth < MONTHLY_WITHDRAWAL_LIMIT);
     }
+
 }

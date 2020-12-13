@@ -25,6 +25,12 @@ public class CommandProcessor {
             new CreateCommandProcessor(bank).processCommand(command);
         } else if (this.command.equals("deposit")) {
             new DepositCommandProcessor(bank).processCommand(command);
+        } else if (this.command.equals("withdraw")) {
+            new WithdrawCommandProcessor(bank).processCommand(command);
+        } else if (this.command.equals("pass")) {
+            new PassCommandProcessor(bank).processCommand(command);
+        } else if (this.command.equals("transfer")) {
+            new TransferCommandProcessor(bank).processCommand(command);
         }
     }
 }

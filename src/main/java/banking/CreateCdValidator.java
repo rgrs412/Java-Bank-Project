@@ -19,8 +19,7 @@ public class CreateCdValidator extends CreateCommandValidator {
     }
 
     public boolean isValidMinimumInitialDeposit() {
-        String id = getCommandArray()[2];
         Double initialDeposit = Double.parseDouble(getCommandArray()[4]);
-        return bank.isValidInitialDeposit(id, initialDeposit);
+        return initialDeposit >= 1000;
     }
 }

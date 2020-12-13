@@ -11,6 +11,7 @@ public class WithdrawCommandProcessor extends CommandProcessor {
     @Override
     public void processCommand(String command) {
         setArguments(command);
+        bank.getBankAccounts().get(id).getTransactionHistory().add(command);
         bank.withdraw(id, amount);
     }
 
