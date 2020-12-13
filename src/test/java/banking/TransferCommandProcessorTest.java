@@ -11,7 +11,6 @@ public class TransferCommandProcessorTest {
     public static final String TRANSFER_COMMAND_TEMPLATE = String.format("transfer %s %s ", ID, ID_TWO);
     public static final String VALID_CREATE_CHECKING_COMMAND = "create checking 12345678 0.1";
     public static final String VALID_CREATE_CHECKING_COMMAND_2 = "create checking 87654321 0.1";
-    public static final Double APR = 0.01;
     Bank bank;
     TransferCommandProcessor transferCommandProcessor;
     CreateCommandProcessor createCommandProcessor;
